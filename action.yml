@@ -1,0 +1,19 @@
+name: 'Triage Bot'
+description: 'Triages PRs and Issues using a hybrid rules engine and LLM.'
+inputs:
+  github-token:
+    description: 'GitHub token for fetching PR data and interacting.'
+    required: true
+  scores-salt:
+    description: 'Secret salt for HMAC-hashing usernames in the scores file. Required if point_system metric is enabled. Store this as a repository secret.'
+    required: false
+  ai-model:
+    description: 'GitHub Models model name for AI checks (e.g. gpt-4o-mini, meta-llama-3.1-70b-instruct). If omitted, AI checks are skipped.'
+    required: false
+  config-path:
+    description: 'Path to the triage configuration YAML file.'
+    required: false
+    default: '.github/triage-rules.yml'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

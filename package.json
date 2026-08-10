@@ -1,0 +1,40 @@
+{
+  "name": "triage",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist",
+    "test": "jest",
+    "test:ci": "jest --json --outputFile=jest-results.json",
+    "lint": "eslint \"src/*.ts\" \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/*.ts\" \"src/**/*.ts\" --fix",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.8.0",
+    "@vercel/ncc": "^0.38.4",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.6.0",
+    "jest": "^30.4.2",
+    "prettier": "^3.8.3",
+    "ts-jest": "^29.4.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.3"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "fast-xml-parser": "^5.8.0",
+    "js-yaml": "^4.1.1"
+  }
+}

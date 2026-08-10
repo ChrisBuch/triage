@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages>
+    <metrics>
+        <accountAge>Account age is {0} days, which is less than the required {1} days.</accountAge>
+        <pointSystem>User score is {0}, which is less than the required {1} points.</pointSystem>
+        <linter>Linters or CI checks have failed. Please fix them before proceeding.</linter>
+        <codeDuplication>Code duplication is at {0}%, which exceeds the allowed maximum of {1}%.</codeDuplication>
+        <cyclomaticComplexity>{0} function(s) exceed the cyclomatic complexity threshold of {1}: {2}</cyclomaticComplexity>
+    </metrics>
+    <prompts>
+        <slopDetection>Analyze the following Pull Request for low-quality or AI-generated 'slop' content. Strictness level: {0}. If it is low quality, reply with a short explanation starting with 'FAIL:'. Otherwise, reply 'PASS'.</slopDetection>
+        <slopDetectionContent>Title/Body:\n{0}\n\nDiff:\n{1}</slopDetectionContent>
+        <reviewQuality>{0}\nEvaluate the following PR. If it fails the criteria, reply with a short explanation starting with 'FAIL:'. Otherwise, reply 'PASS'.</reviewQuality>
+        <reviewQualityContent>Title/Body:\n{0}\n\nDiff:\n{1}</reviewQualityContent>
+    </prompts>
+    <github>
+        <issuesDetectedHeader>### Triage Bot: Issues Detected\n\nThe following metrics failed:\n\n</issuesDetectedHeader>
+        <issuesDetectedFooter>\n\nPlease address these issues to proceed.</issuesDetectedFooter>
+        <changesRequestedHeader>### Triage Bot: Changes Requested\n\n</changesRequestedHeader>
+        <actionOnlyPullRequest>This action only runs on pull_request events.</actionOnlyPullRequest>
+        <allChecksPassed>Triage bot: All checks passed!</allChecksPassed>
+        <issuesDetectedSummary>Triage bot detected {0} issues.</issuesDetectedSummary>
+        <actionFailedWithError>Action failed with error: {0}</actionFailedWithError>
+        <actionFailedUnknown>Action failed with unknown error.</actionFailedUnknown>
+    </github>
+</messages>

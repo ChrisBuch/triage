@@ -1,0 +1,33 @@
+name: PR Pipeline
+
+on:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm test
+
+  triage:
+    needs: [lint, test]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install lizard
+      - uses: your-org/triage-bot@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          scores-salt: ${{ secrets.TRIAGE_SCORES_SALT }}
+          ai-model: gpt-4o-mini
+          config-path: .github/triage-rules.yml

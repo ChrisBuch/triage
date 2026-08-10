@@ -1,0 +1,50 @@
+triage_levels:
+  - name: blocker
+    triggers: [account_age, linter_passed]
+    actions: [close_pr, comment_structured_error, label_blocked]
+
+  - name: quality-warning
+    triggers: [duplication, cyclomatic_complexity, detect_slop]
+    actions: [label_needs-improvement, comment_structured_error]
+
+  - name: approved
+    triggers: []
+    actions: [approve, remove_label_needs-improvement, label_ready-to-merge]
+
+user_metrics:
+  account_age:
+    enabled: true
+    min_days: 30
+  point_system:
+    enabled: true
+    min_score: 5
+
+code_metrics:
+  linter_passed:
+    enabled: true
+  duplication:
+    enabled: true
+    max_percentage: 5
+    ignore_patterns:
+      - "**/node_modules/**"
+      - "**/dist/**"
+      - "**/vendor/**"
+  cyclomatic_complexity:
+    enabled: true
+    max_complexity: 10
+    ignore_patterns:
+      - "**/node_modules/**"
+      - "**/*.test.ts"
+      - "**/*.spec.ts"
+
+ai_checks:
+  detect_slop:
+    enabled: true
+    strictness: high
+  review_quality:
+    - name: multi-domain-check
+      enabled: true
+      prompt: "Check if this PR modifies multiple unrelated domains or modules without a clear reason."
+    - name: empty-functions-check
+      enabled: true
+      prompt: "Check if this PR introduces empty, stub, or placeholder functions that have no implementation."
